@@ -1,18 +1,22 @@
-const reverseString = (input) => {
- if(input === ""){
-  return ""
- } 
- return reverseString(input.substring(1)) +  input.charAt(0)
+const createUser = (name, score) => {
+    const newUser = Object.create(sharedFunctionalities);
+    newUser.name = name;
+    newUser.score = score;
+    return newUser;
 }
 
-/****
- * reversString(ello) + H
- * reversString(llo) + eH
- * reversString(lo) + leH
- * reversString(o) + lleH
- *  + olleH
- *olleH
- * 
- * 
- */
-console.log(reverseString("Hello"))
+const sharedFunctionalities = {
+    increment: function () {
+        return this.score += 1
+    },
+    login: () => console.log("user Successfully logged in")
+} 
+
+const user1 = createUser("Eric Nkaka", 45);
+const user2 = createUser("kettia", 4);
+console.log(user1.increment())
+
+console.log("Object", user1)
+console.log(user1.name)
+user1.login();
+console.log(user1.score)
